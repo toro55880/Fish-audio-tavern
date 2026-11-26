@@ -1,0 +1,324 @@
+/* Minimal drawer in Extensions tab */
+.stvc-ext-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Floating Ball & Panel Root */
+#stvc_root {
+    position: fixed;
+    right: 20px;
+    bottom: 84px;
+    z-index: 2147483647;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    font-family: inherit;
+    pointer-events: none;
+}
+
+#stvc_root > * {
+    pointer-events: auto;
+}
+
+/* Floating Ball */
+.stvc-ball {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 42px;
+    padding: 0 15px;
+    border-radius: 999px;
+    border: 1px solid rgba(147, 197, 253, 0.35);
+    background: linear-gradient(135deg, rgba(28, 33, 48, 0.94), rgba(18, 22, 34, 0.96));
+    color: #f1f5f9;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.stvc-ball:hover {
+    transform: translateY(-1px);
+    border-color: rgba(147, 197, 253, 0.7);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.65);
+}
+
+.stvc-ball.playing {
+    border-color: #8ce99a;
+    color: #8ce99a;
+}
+
+/* Expanded Floating Panel */
+.stvc-panel {
+    width: 390px;
+    max-width: 92vw;
+    max-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(18, 21, 30, 0.96);
+    color: #e2e8f0;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.68);
+    backdrop-filter: blur(14px);
+    overflow: hidden;
+}
+
+.stvc-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.stvc-panel-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stvc-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.stvc-tab {
+    padding: 8px 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-align: center;
+    color: #94a3b8;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.stvc-tab:hover {
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.stvc-tab.active {
+    color: #93c5fd;
+    border-bottom-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.08);
+}
+
+.stvc-body {
+    padding: 10px 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.stvc-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.stvc-row > input[type="text"],
+.stvc-row > select {
+    flex: 1;
+    min-width: 0;
+}
+
+.stvc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.stvc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 12px;
+}
+
+.stvc-field label {
+    color: #cbd5e1;
+    font-size: 11.5px;
+}
+
+.stvc-input,
+.stvc-select {
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(10, 12, 18, 0.85);
+    color: #f1f5f9;
+    font-size: 12.5px;
+    box-sizing: border-box;
+}
+
+.stvc-btn {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.09);
+    color: #f1f5f9;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.stvc-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.stvc-btn.primary {
+    background: rgba(59, 130, 246, 0.35);
+    border-color: rgba(96, 165, 250, 0.55);
+}
+
+.stvc-btn.primary:hover {
+    background: rgba(59, 130, 246, 0.55);
+}
+
+.stvc-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #e2e8f0;
+    cursor: pointer;
+}
+
+.stvc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stvc-line-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px 9px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 12.5px;
+}
+
+.stvc-line-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stvc-line-speaker {
+    font-weight: 700;
+    font-size: 11.5px;
+    color: #93c5fd;
+}
+
+.stvc-line-text {
+    color: #e2e8f0;
+    word-break: break-word;
+    line-height: 1.35;
+}
+
+.stvc-cache-badge {
+    font-size: 11px;
+    color: #8ce99a;
+    opacity: 0.9;
+    font-family: monospace;
+    margin-top: 2px;
+}
+
+.stvc-line-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.stvc-char-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stvc-char-name {
+    min-width: 82px;
+    max-width: 105px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 12.5px;
+}
+
+.stvc-status {
+    font-size: 11.5px;
+    padding: 6px 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.25);
+    color: #cbd5e1;
+}
+
+.stvc-status.ok {
+    color: #8ce99a;
+}
+
+.stvc-status.err {
+    color: #ff8787;
+}
+
+.stvc-empty {
+    text-align: center;
+    padding: 18px 8px;
+    font-size: 12.5px;
+    color: #94a3b8;
+}
+
+@media (max-width: 640px) {
+    #stvc_root {
+        right: 12px;
+        bottom: 72px;
+    }
+
+    .stvc-panel {
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+        max-height: 76vh;
+    }
+
+    .stvc-btn,
+    .stvc-tab {
+        min-height: 34px;
+    }
+}
+
+/* ---- v2: cloud-only additions ---- */
+.stvc-line-content .stvc-select {
+    margin: 4px 0 2px;
+    max-width: 100%;
+}
+.stvc-char-row .stvc-input {
+    flex: 1;
+    min-width: 0;
+}
